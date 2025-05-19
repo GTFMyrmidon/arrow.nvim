@@ -483,6 +483,13 @@ function M.openMenu(bufnr)
 		closeMenu()
 	end, menuKeymapOpts)
 
+	for i = 0, 9 do
+		vim.keymap.set("n", "<C-" .. i .. ">", function()
+			closeMenu()
+			persist.go_to(i)
+		end, menuKeymapOpts)
+	end
+
 	vim.keymap.set("n", mappings.next_item, function()
 		closeMenu()
 		persist.next()
